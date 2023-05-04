@@ -5,8 +5,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt-get install -y nodejs
 
-ARG CLIENT_ID
-ENV CLIENT_ID=2
+ENV CLIENT_ID=572348353990-s5pk5k8tunb8dtnjdluvm0897lbkvkcj.apps.googleusercontent.com
 
 RUN                                                                       \
   apt-get install -y                                                      \
