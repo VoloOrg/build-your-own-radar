@@ -26,7 +26,7 @@ const plugins = [
     inject: 'body',
   }),
   new webpack.DefinePlugin({
-    'process.env.CLIENT_ID': JSON.stringify('572348353990-s5pk5k8tunb8dtnjdluvm0897lbkvkcj.apps.googleusercontent.com'),
+    'process.env.CLIENT_ID': '572348353990-s5pk5k8tunb8dtnjdluvm0897lbkvkcj.apps.googleusercontent.com',
     'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
     'process.env.ENABLE_GOOGLE_AUTH': JSON.stringify(process.env.ENABLE_GOOGLE_AUTH),
     'process.env.GTM_ID': JSON.stringify(process.env.GTM_ID),
