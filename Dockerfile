@@ -1,3 +1,7 @@
+ARG CLIENT_ID
+ARG API_KEY
+ENV CLIENT_ID=$CLIENT_ID
+ENV API_KEY=$API_KEY
 FROM nginx:1.23.0
 
 RUN apt-get update && apt-get upgrade -y
