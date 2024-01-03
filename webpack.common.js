@@ -26,8 +26,8 @@ const plugins = [
     inject: 'body',
   }),
   new webpack.DefinePlugin({
-    'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
-    'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID).trim(),
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY).trim(),
     'process.env.ENABLE_GOOGLE_AUTH': JSON.stringify(process.env.ENABLE_GOOGLE_AUTH),
     'process.env.GTM_ID': JSON.stringify(process.env.GTM_ID),
     'process.env.RINGS': JSON.stringify(process.env.RINGS),
@@ -73,7 +73,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|ico|svg|csv)$/,
         exclude: /node_modules/,
         type: 'asset/resource',
       },
