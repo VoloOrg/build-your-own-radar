@@ -196,14 +196,14 @@ function getGroupBlipTooltipText(ringBlips) {
   let tooltipText = 'Click to view all'
   if (ringBlips.length <= 15) {
     tooltipText = ringBlips.reduce((toolTip, blip) => {
-      toolTip += blip.id() + '.' + blip.name() + '</br>'
+      toolTip += blip.id() + '. ' + blip.name() + '</br>'
       return toolTip
     }, '')
   }
   return tooltipText
 }
 
-const findexistingBlipCoords = function (ringIndex, deg) {
+const findExistingBlipCoords = function (ringIndex, deg) {
   const blipWidth = graphConfig.existingGroupBlipWidth
   const ringWidth = getRingRadius(ringIndex) - getRingRadius(ringIndex - 1)
   const halfRingRadius = getRingRadius(ringIndex) - ringWidth / 2
@@ -220,7 +220,7 @@ function findNewBlipCoords(existingCoords) {
 }
 
 const groupBlipsBaseCoords = function (ringIndex) {
-  const existingCoords = findexistingBlipCoords(ringIndex + 1, graphConfig.groupBlipAngles[ringIndex])
+  const existingCoords = findExistingBlipCoords(ringIndex + 1, graphConfig.groupBlipAngles[ringIndex])
 
   return {
     existing: existingCoords,
