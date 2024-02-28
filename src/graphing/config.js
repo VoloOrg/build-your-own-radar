@@ -1,5 +1,5 @@
-const quadrantSize = 512
-const quadrantGap = 32
+const quadrantSize = 640
+const quadrantGap = 20
 
 const getQuadrants = () => {
   return JSON.parse(process.env.QUADRANTS || null) || ['Techniques', 'Platforms', 'Tools', 'Languages & Frameworks']
@@ -23,10 +23,10 @@ const graphConfig = {
   quadrantWidth: quadrantSize,
   quadrantsGap: quadrantGap,
   minBlipWidth: 12,
-  blipWidth: 22,
-  groupBlipHeight: 24,
-  newGroupBlipWidth: 88,
-  existingGroupBlipWidth: 124,
+  blipWidth: 18,
+  groupBlipHeight: 18,
+  newGroupBlipWidth: 20,
+  existingGroupBlipWidth: 20,
   rings: getRings(),
   quadrants: getQuadrants(),
   groupBlipAngles: [30, 35, 60, 80],
@@ -44,7 +44,7 @@ const uiConfig = {
 }
 
 function getScale() {
-  return window.innerWidth < 1800 ? 1.25 : 1.5
+  return window.innerWidth < 1800 ? 1.15 : 1.5
 }
 
 function getGraphSize() {
