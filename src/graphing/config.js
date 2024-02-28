@@ -1,5 +1,5 @@
-const quadrantSize = 640
-const quadrantGap = 20
+const quadrantSize = 550
+const quadrantGap = 16
 
 const getQuadrants = () => {
   return JSON.parse(process.env.QUADRANTS || null) || ['Techniques', 'Platforms', 'Tools', 'Languages & Frameworks']
@@ -13,7 +13,7 @@ const isBetween = (number, startNumber, endNumber) => {
   return startNumber <= number && number <= endNumber
 }
 const isValidConfig = () => {
-  return getQuadrants().length === 4 && isBetween(getRings().length, 1, 4)
+  return getQuadrants().length === 4 && isBetween(getRings().length, 1, 3)
 }
 
 const graphConfig = {
@@ -23,14 +23,14 @@ const graphConfig = {
   quadrantWidth: quadrantSize,
   quadrantsGap: quadrantGap,
   minBlipWidth: 12,
-  blipWidth: 18,
-  groupBlipHeight: 18,
-  newGroupBlipWidth: 20,
-  existingGroupBlipWidth: 20,
+  blipWidth: 22,
+  groupBlipHeight: 24,
+  newGroupBlipWidth: 88,
+  existingGroupBlipWidth: 124,
   rings: getRings(),
   quadrants: getQuadrants(),
   groupBlipAngles: [30, 35, 60, 80],
-  maxBlipsInRings: [65, 22, 18],
+  maxBlipsInRings: [60, 22, 17],
 }
 
 const uiConfig = {

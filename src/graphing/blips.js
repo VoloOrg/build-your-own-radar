@@ -9,7 +9,7 @@ const config = require('../config')
 const featureToggles = config().featureToggles
 
 const getRingRadius = function (ringIndex) {
-  const ratios = [0, 0.652, 0.832, 0.992]
+  const ratios = [0, 0.752, 0.876, 0.992]
   const radius = ratios[ringIndex] * graphConfig.quadrantWidth
   return radius || 0
 }
@@ -72,7 +72,7 @@ function avoidBoundaryCollision(x, y, adjustX, adjustY) {
 }
 
 function findBlipCoordinates(blip, minRadius, maxRadius, startAngle, allBlipCoordinatesInRing, quadrantOrder) {
-  const maxIterations = 200
+  const maxIterations = 3000
   const chance = new Chance(
     Math.PI *
       graphConfig.quadrantWidth *

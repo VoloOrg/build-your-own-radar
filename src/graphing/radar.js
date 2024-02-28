@@ -304,7 +304,7 @@ const Radar = function (size, radar) {
   }
 
   function findBlipCoordinates(blip, minRadius, maxRadius, startAngle, allBlipCoordinatesInRing, quadrantOrder) {
-    const maxIterations = 200
+    const maxIterations = 3000
     var coordinates = calculateBlipCoordinates(blip, chance, minRadius, maxRadius, startAngle, quadrantOrder)
     var iterationCounter = 0
     var foundAPlace = false
