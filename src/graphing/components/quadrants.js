@@ -20,7 +20,7 @@ let quadrantScrollHandlerReference
 let scrollFlag = false
 
 const createElement = (tagName, text, attributes) => {
-  const tag = document.createElement(tagName)
+  const tag = document.createElementNS('http://www.w3.org/2000/svg', tagName)
   Object.keys(attributes).forEach((keyName) => {
     tag.setAttribute(keyName, attributes[keyName])
   })
