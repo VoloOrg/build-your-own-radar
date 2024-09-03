@@ -5,7 +5,7 @@ function renderAlternativeRadars(radarFooter, alternatives, currentSheet) {
   const alternativesContainer = radarFooter.append('div').classed('alternative-radars', true)
 
   for (let i = 0; alternatives.length > 0; i++) {
-    const list = alternatives.splice(0, 5)
+    const list = alternatives.splice(0, alternatives.length)
 
     const alternativesList = alternativesContainer
       .append('ul')

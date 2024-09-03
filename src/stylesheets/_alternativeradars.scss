@@ -7,6 +7,10 @@
     flex-direction: column;
     width: 100%;
 
+    .buttons {
+      display: none;
+    }
+
     @include media-query-medium {
       align-items: center;
     }
@@ -17,14 +21,15 @@
     flex-direction: column;
     align-items: center;
 
-    margin: 32px auto 0;
+    margin: 15px auto 0;
+    width: 100%;
 
-    @include layout-margin(1, $screen-small);
-    @include layout-margin(1, $screen-medium);
-    @include layout-margin(1, $screen-large);
-    @include layout-margin(1, $screen-xlarge);
-    @include layout-margin(1, $screen-xxlarge);
-    @include layout-margin(calc(10 / 12), $screen-xxxlarge);
+    //@include layout-margin(1, $screen-small);
+    //@include layout-margin(1, $screen-medium);
+    //@include layout-margin(1, $screen-large);
+    //@include layout-margin(1, $screen-xlarge);
+    //@include layout-margin(1, $screen-xxlarge);
+    //@include layout-margin(calc(10 / 12), $screen-xxxlarge);
 
     &__list {
       width: 100%;
@@ -35,7 +40,7 @@
       justify-content: center;
       font-size: 1.125rem;
       font-family: $baseFontFamily;
-      font-weight: 630;
+      font-weight: 500;
       margin-block: 0;
       margin-bottom: 16px;
       margin-left: 0;
@@ -46,12 +51,12 @@
       }
 
       @include media-query-xxlarge {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
 
       &__row-0 {
         @include media-query-medium {
-          margin-top: 48px;
+          margin-top: 10px;
         }
       }
 
@@ -60,14 +65,42 @@
         flex-basis: 0;
         text-align: center;
         padding: 0 4px;
-        border-bottom: 1px solid $mist;
+        border-bottom: 1px solid #333C4E;
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -2px;
+          height: 4px;
+          background: $azure-blue;
+          transition: ease-in-out 0.2s all;
+          opacity: 0;
+          visibility: hidden;
+        }
 
         &.active {
-          border-bottom: 3px solid $flamingo-s40;
-          color: $flamingo-s40;
+          color: $sapphire;
+
+          &:before {
+            opacity: 1;
+            visibility: visible;
+          }
 
           &:hover {
-            color: $link-hover;
+            color: $sapphire;
+          }
+
+          .alternative-radars__list-item-link {
+            color: $sapphire;
+          }
+        }
+
+        .alternative-radars__list-item-link {
+          &:hover {
+            color: $sapphire;
           }
         }
 

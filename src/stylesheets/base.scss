@@ -20,7 +20,7 @@
 @import 'pdfPage';
 
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
@@ -62,8 +62,8 @@
 
       h2 {
         font-size: 1.25rem;
-        font-weight: 630;
-        font-family: 'Inter', serif;
+        font-weight: bold;
+        font-family: 'Roboto', serif;
         text-transform: none;
         letter-spacing: normal;
 

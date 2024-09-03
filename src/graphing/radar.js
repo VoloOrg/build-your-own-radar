@@ -776,11 +776,11 @@ const Radar = function (size, radar) {
     renderBanner(renderFullRadar)
 
     if (featureToggles.UIRefresh2022) {
-      renderQuadrantSubnav(radarHeader, quadrants, renderFullRadar)
-      renderSearch(radarHeader, quadrants)
+      // renderQuadrantSubnav(radarHeader, quadrants, renderFullRadar)
+      // renderSearch(radarHeader, quadrants)
       renderAlternativeRadars(radarFooter, alternatives, currentSheet)
-      renderQuadrantTables(quadrants, rings)
-      renderButtons(radarFooter)
+      renderQuadrantTables(quadrants, rings, renderFullRadar)
+      // renderButtons(radarFooter)
 
       const landingPageElements = document.querySelectorAll('main .home-page')
       landingPageElements.forEach((elem) => {

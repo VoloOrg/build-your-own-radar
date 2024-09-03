@@ -126,7 +126,6 @@ function selectRadarQuadrant(order, startAngle, name) {
     .style('left', 'unset')
     .style('right', 0)
     .style('transform', `translate(${quadrantGroupTranslate[order].x}px, ${quadrantGroupTranslate[order].y}px)`)
-    .attr('transform', `translate(${quadrantGroupTranslate[order].x}px, ${quadrantGroupTranslate[order].y}px)`)
 
   d3.selectAll('.quadrant-group-' + order + ' .blip-link text').each(function () {
     d3.select(this.parentNode).transition().duration(ANIMATION_DURATION)
@@ -295,7 +294,7 @@ function renderRadarQuadrantName(quadrant, parentGroup, tip) {
     .append('polygon')
     .attr('class', 'quadrant-name-cta')
     .attr('points', '5.2105e-4 11.753 1.2874 13 8 6.505 1.2879 0 0 1.2461 5.4253 6.504')
-    .attr('fill', '#e16a7c')
+    .attr('fill', '#a4a5a5')
   quadrantName.text(quadrantNameToDisplay).attr('font-weight', 'bold')
 
   wrapQuadrantNameInMultiLine(quadrantName, adjustY < 0, quadrantNameGroup, tip)
@@ -467,6 +466,7 @@ function quadrantScrollHandler(
       radarElement.style('top', `${quadrantTableHeight - radarHeight - uiConfig.subnavHeight}px`)
       radarElement.style('left', prevLeft)
 
+      console.log(66, prevLeft, leftQuadrantLeftValue)
       radarLegendsContainer.style(
         'top',
         `${quadrantTableHeight - radarHeight - uiConfig.subnavHeight + getScaledQuadrantHeightWithGap(scale)}px`,

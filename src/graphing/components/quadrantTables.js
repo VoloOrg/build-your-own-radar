@@ -152,7 +152,7 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
     .on('click', blipClick)
 }
 
-function renderQuadrantTables(quadrants, rings) {
+function renderQuadrantTables(quadrants, rings, renderFullRadar) {
   const radarContainer = d3.select('#radar')
 
   const quadrantTablesContainer = radarContainer.append('div').classed('quadrant-table__container', true)
@@ -190,6 +190,22 @@ function renderQuadrantTables(quadrants, rings) {
           .map((ring) => ring.name()),
       ),
     )
+
+    const backContainer = quadrantContainer
+      .append('div')
+      .classed('blip-list__back-container', true);
+    const backBox = backContainer.append('div')
+      .classed('blip-list__back-container__box', true);
+
+    backBox.append('span')
+      .classed('blip-list__back-container__arrow', true);
+
+    backBox.append('span')
+      .classed('blip-list__back-container__name-value', true)
+      .text('Back');
+
+    backBox.on('click', renderFullRadar)
+
     ringNames.forEach(function (ringName) {
       quadrantContainer
         .append('h2')

@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/images/favicon.ico" rel="icon" />
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap" rel="stylesheet" />
   </head>
 
   <body>
-    <header class="input-sheet__logo">
+    <header class="input-sheet__logo" style="display: none">
       <div>
         <span>Powered by</span>
         <a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" alt="Thoughtworks logo" /></a>
       </div>
     </header>
-    <div class="hero-banner">
+    <div class="hero-banner" style="display: none">
       <div class="hero-banner__wrapper">
         <h1 class="hero-banner__title-text">Build your own Radar</h1>
       </div>
@@ -69,16 +69,16 @@
           <a href="https://www.thoughtworks.com/radar/byor#guide">Need help?</a>
         </form>
       </div>
-      <div class="graph-header"></div>
+      <div class="graph-header" style="display: none"></div>
+      <div class="graph-footer"></div>
+      <div class="all-quadrants-mobile show-all-quadrants-mobile"></div>
       <div id="radar">
         <p class="no-blip-text">
           There are no blips on this quadrant, please check your Google sheet/CSV/JSON file once.
         </p>
       </div>
-      <div class="all-quadrants-mobile show-all-quadrants-mobile"></div>
-      <div class="graph-footer"></div>
     </main>
-    <footer class="home-page">
+    <footer class="home-page" style="display: none">
       <div class="pdf-footer">
         <div class="pdf-powered-by-text">
           <span>Powered by</span>
