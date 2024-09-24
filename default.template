@@ -1,6 +1,7 @@
 # server block for static file serving
 server {
   listen 80;
+  add_header Content-Security-Policy "frame-ancestors 'self' volo.global dev.volo.global;";
   location / {
     root /opt/build-your-own-radar;
     index index.html;
