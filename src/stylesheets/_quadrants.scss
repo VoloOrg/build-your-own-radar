@@ -399,7 +399,7 @@
       margin: $quadrantsGap auto;
       width: 100%;
       position: absolute;
-      top: calc($quadrantWidth * 2 + $quadrantsGap);
+      bottom: -22px;
     }
 
     img:nth-child(n + 2) {
