@@ -178,6 +178,9 @@ const GoogleSheet = function (sheetReference, sheetName) {
     if (parent) {
       parent.postMessage(document.body.offsetHeight, '*');
     }
+    window.addEventListener('resize', function () {
+      parent.postMessage(document.body.offsetHeight, '*');
+    });
   }
 
   self.authenticate = function (force = false, apiKeyEnabled, callback) {
