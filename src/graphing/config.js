@@ -1,4 +1,4 @@
-const quadrantSize = window.innerWidth / 2 - 32
+const quadrantSize = typeof window !== "undefined" ? window.innerWidth / 2 - 32 : 550;
 // const quadrantSize = 550
 const quadrantGap = 16
 
