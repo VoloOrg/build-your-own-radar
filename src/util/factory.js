@@ -175,6 +175,9 @@ const GoogleSheet = function (sheetReference, sheetName) {
     featureToggles.UIRefresh2022
       ? plotRadarGraph(title, blips, sheetName, sheetNames)
       : plotRadar(title, blips, sheetName, sheetNames)
+    if (parent) {
+      parent.postMessage(document.body.offsetHeight, '*');
+    }
   }
 
   self.authenticate = function (force = false, apiKeyEnabled, callback) {
