@@ -1,4 +1,5 @@
-const quadrantSize = 550
+const quadrantSize = window.innerWidth / 2 - 32
+// const quadrantSize = 550
 const quadrantGap = 16
 
 const getQuadrants = () => {
@@ -34,10 +35,10 @@ const graphConfig = {
 }
 
 const uiConfig = {
-  subnavHeight: 60,
-  bannerHeight: 200,
-  tabletBannerHeight: 300,
-  headerHeight: 80,
+  subnavHeight: 0,
+  bannerHeight: 0,
+  tabletBannerHeight: 0,
+  headerHeight: 0,
   legendsHeight: 42,
   tabletViewWidth: 1280,
   mobileViewWidth: 768,
