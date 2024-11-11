@@ -332,6 +332,8 @@ const Factory = function () {
 
     const domainName = DomainName(window.location.search.substring(1))
 
+    const PREDEFINED_DOCUMENT_ID = process.env.DOCUMENT_ID;
+    const PREDEFINED_SHEET_NAME = process.env.SHEET_NAME;
     const paramId = getDocumentOrSheetId()
     if (paramId && paramId.endsWith('.csv')) {
       sheet = CSVDocument(paramId)
@@ -342,6 +344,10 @@ const Factory = function () {
     } else if (domainName && domainName.endsWith('google.com') && paramId) {
       const sheetName = getSheetName()
       sheet = GoogleSheet(paramId, sheetName)
+      sheet.init().build()
+    }else if(PREDEFINED_DOCUMENT_ID) {
+      const sheetName =  getSheetName() || PREDEFINED_SHEET_NAME;
+      sheet = GoogleSheet(PREDEFINED_DOCUMENT_ID, sheetName)
       sheet.init().build()
     } else {
       if (!featureToggles.UIRefresh2022) {
@@ -386,8 +392,8 @@ function plotLoading(content) {
     plotBanner(content, bannerText)
     plotFooter(content)
   } else {
-    document.querySelector('.helper-description > p').style.display = 'none'
-    document.querySelector('.input-sheet-form').style.display = 'none'
+    // document.querySelector('.helper-description > p').style.display = 'none'
+    // document.querySelector('.input-sheet-form').style.display = 'none'
     document.querySelector('.helper-description .loader-text').style.display = 'block'
   }
 }
@@ -493,8 +499,8 @@ function plotError(exception, fileType) {
   errorContainer.append('p').html(faqMessage)
   d3.select('.input-sheet-form.home-page p').attr('class', 'with-error')
 
-  document.querySelector('.helper-description > p').style.display = 'block'
-  document.querySelector('.input-sheet-form').style.display = 'block'
+  // document.querySelector('.helper-description > p').style.display = 'block'
+  // document.querySelector('.input-sheet-form').style.display = 'block'
 
   if (!featureToggles.UIRefresh2022) {
     let homePageURL = window.location.protocol + '//' + window.location.hostname

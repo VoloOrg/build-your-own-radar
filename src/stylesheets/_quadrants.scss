@@ -403,9 +403,27 @@
       max-height: 50px;
     }
 
-    img:nth-child(n + 2) {
+    .legend{
+      width: 37px;
+      height: 37px;
+    }
+
+    .legend:nth-child(n + 2) {
       margin-left: 24px;
     }
+    .legend.new-image{
+      content: url("./images/new.svg");
+    }
+    .legend.moved-image{
+      content: url("./images/moved.svg");
+    }
+    .legend.existing-image{
+      content: url("./images/existing.svg");
+    }
+    .legend.no-change-image{
+      content: url("./images/no-change.svg");
+    }
+
   }
 
   .all-quadrants-mobile {
@@ -478,15 +496,19 @@
 
     #first-quadrant-mobile {
       background-color: $sapphire;
+      background-image: url('./images/first-quadrant-btn-bg.svg');
     }
     #second-quadrant-mobile {
       background-color: $turmeric;
+      background-image: url("./images/second-quadrant-btn-bg.svg");
     }
     #third-quadrant-mobile {
       background-color: $jade;
+      background-image: url("./images/third-quadrant-btn-bg.svg");
     }
     #fourth-quadrant-mobile {
       background-color: $flamingo;
+      background-image: url("./images/fourth-quadrant-btn-bg.svg");
     }
   }
 }
