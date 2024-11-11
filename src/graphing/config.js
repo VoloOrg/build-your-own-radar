@@ -1,4 +1,4 @@
-const quadrantSize = typeof window !== "undefined" ? window.innerWidth / 2 - 32 : 550;
+const quadrantSize = typeof window !== "undefined" && window.innerWidth>1280 ? window.innerWidth / 2 - 32 : 550;
 // const quadrantSize = 550
 const quadrantGap = 16
 
@@ -45,7 +45,7 @@ const uiConfig = {
 }
 
 function getScale() {
-  return window.innerWidth < 1800 ? 1.15 : 1.5
+  return window.innerWidth < 1800 ? 1.15 : 1.2
 }
 
 function getGraphSize() {

@@ -560,6 +560,8 @@ const Radar = function (size, radar) {
       .attr('transform', 'translate(0,0)')
 
     d3.select('#radar-plot').attr('width', size).attr('height', size)
+
+    d3.select('#radar').style('height', size+"px")
     d3.select(`svg#radar-plot`).style('padding', '0')
 
     const radarLegendsContainer = d3.select('.radar-legends')

@@ -100,6 +100,7 @@
       a {
         color: $link-normal;
         border-color: $link-normal;
+        text-decoration: none;
 
         &:hover {
           color: $link-hover;

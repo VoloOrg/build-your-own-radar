@@ -42,6 +42,7 @@ function selectRadarQuadrant(order, startAngle, name) {
 
   d3.selectAll('.blip-item-description').classed('expanded', false)
 
+  const selectedQuadrantTable = d3.select('.quadrant-table.selected');
   const scale = getScale()
 
   const adjustX = Math.sin(toRadian(startAngle)) - Math.cos(toRadian(startAngle))
@@ -53,6 +54,7 @@ function selectRadarQuadrant(order, startAngle, name) {
   const radarContainer = d3.select('#radar')
   const parentWidth = getElementWidth(radarContainer)
 
+  radarContainer.style('height', `${getElementHeight(selectedQuadrantTable)+60}px`)
   const translateLeftRightValues = {
     first: {
       left: parentWidth - quadrantWidth * scale,
@@ -301,7 +303,7 @@ function renderRadarQuadrantName(quadrant, parentGroup, tip) {
   if (adjustX < 0) {
     translateX = 60
   } else {
-    translateX = quadrantWidth * 2 - quadrantsGap - renderedText.width
+    translateX = quadrantWidth * 2 - 60 - renderedText.width
   }
   if (adjustY < 0) {
     ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? 8 : ctaArrowYOffset
