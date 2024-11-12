@@ -24,6 +24,7 @@ const plugins = [
     template: './src/index.html',
     chunks: ['main'],
     inject: 'body',
+    hash: true,
   }),
   new webpack.DefinePlugin({
     'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID).trim(),
