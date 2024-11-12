@@ -396,7 +396,7 @@ function renderRadarLegends(radarElement, hasMovements) {
   const legendsContainer = radarElement.append('div').classed('radar-legends', true)
   const newImage = legendsContainer
     .append('div')
-    .attr('class', 'legend new-image')
+    .attr('class', 'legend-div new-image')
     .attr('width', '37px')
     .attr('height', '37px')
     .attr('title', 'new blip legend icon')
@@ -404,7 +404,7 @@ function renderRadarLegends(radarElement, hasMovements) {
 
   const movedImage = legendsContainer
     .append('div')
-    .attr('class', 'legend moved-image')
+    .attr('class', 'legend-div moved-image')
     .attr('width', '37px')
     .attr('height', '37px')
     .attr('title', `moved in or out blip legend icon`)
@@ -412,7 +412,7 @@ function renderRadarLegends(radarElement, hasMovements) {
 
   const existingImage = legendsContainer
     .append('div')
-    .attr("class", "legend existing-image")
+    .attr("class", "legend-div existing-image")
     .attr('width', '37px')
     .attr('height', '37px')
     .attr('title', 'existing blip legend icon')
@@ -420,7 +420,7 @@ function renderRadarLegends(radarElement, hasMovements) {
 
   const noChangeImage = legendsContainer
     .append('div')
-    .attr('class', 'legend no-change-image')
+    .attr('class', 'legend-div no-change-image')
     .attr('width', '37px')
     .attr('height', '37px')
     .attr('title', 'no change blip legend icon')

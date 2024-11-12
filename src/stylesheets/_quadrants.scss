@@ -403,24 +403,25 @@
       max-height: 50px;
     }
 
-    .legend{
+    //there are .legend old classes that are not used in the new design
+    .legend-div{
       width: 37px;
       height: 37px;
     }
 
-    .legend:nth-child(n + 2) {
+    .legend-div:nth-child(n + 2) {
       margin-left: 24px;
     }
-    .legend.new-image{
+    .legend-div.new-image{
       content: url("./images/new.svg");
     }
-    .legend.moved-image{
+    .legend-div.moved-image{
       content: url("./images/moved.svg");
     }
-    .legend.existing-image{
+    .legend-div.existing-image{
       content: url("./images/existing.svg");
     }
-    .legend.no-change-image{
+    .legend-div.no-change-image{
       content: url("./images/no-change.svg");
     }
 
