@@ -8,7 +8,7 @@ const args = require('yargs').argv
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const env = args.env
+const env = args.envFile
 if (env) {
   // Load env file
   require('dotenv').config({ path: env })
