@@ -34,8 +34,8 @@ const plugins = [
     'process.env.RINGS': JSON.stringify(process.env.RINGS),
     'process.env.QUADRANTS': JSON.stringify(process.env.QUADRANTS),
     'process.env.ADOBE_LAUNCH_SCRIPT_URL': JSON.stringify(process.env.ADOBE_LAUNCH_SCRIPT_URL),
-    'process.env.DOCUMENT_ID': JSON.stringify(process.env.DOCUMENT_ID),
-    'process.env.SHEET_NAME': JSON.stringify(process.env.SHEET_NAME),
+    'process.env.DOCUMENT_ID': JSON.stringify(process.env.DOCUMENT_ID)?.trim(),
+    'process.env.SHEET_NAME': JSON.stringify(process.env.SHEET_NAME)?.trim(),
   }),
 ]
 
