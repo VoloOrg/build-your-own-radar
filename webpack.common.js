@@ -19,11 +19,12 @@ const common = ['./src/common.js']
 const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 const plugins = [
-  new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+  new MiniCssExtractPlugin({ filename: '[name].css' }),
   new HtmlWebpackPlugin({
     template: './src/index.html',
     chunks: ['main'],
     inject: 'body',
+    hash: true,
   }),
   new webpack.DefinePlugin({
     'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID).trim(),
@@ -33,6 +34,8 @@ const plugins = [
     'process.env.RINGS': JSON.stringify(process.env.RINGS),
     'process.env.QUADRANTS': JSON.stringify(process.env.QUADRANTS),
     'process.env.ADOBE_LAUNCH_SCRIPT_URL': JSON.stringify(process.env.ADOBE_LAUNCH_SCRIPT_URL),
+    'process.env.DOCUMENT_ID': JSON.stringify(process.env.DOCUMENT_ID),
+    'process.env.SHEET_NAME': JSON.stringify(process.env.SHEET_NAME),
   }),
 ]
 
@@ -44,7 +47,7 @@ module.exports = {
   output: {
     path: buildPath,
     publicPath: ASSET_PATH,
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     assetModuleFilename: 'images/[name][ext]',
   },
   resolve: {

@@ -23,7 +23,7 @@ function selectRadarQuadrant(order, startAngle, name) {
   const noOfBlips = d3.selectAll('.quadrant-group-' + order + ' .blip-link').size()
   d3.select('#radar').classed('no-blips', noOfBlips === 0)
 
-  d3.select('.graph-header').node().scrollIntoView({
+  d3.select('.graph-footer').node().scrollIntoView({
     behavior: 'smooth',
   })
 
@@ -42,6 +42,7 @@ function selectRadarQuadrant(order, startAngle, name) {
 
   d3.selectAll('.blip-item-description').classed('expanded', false)
 
+  const selectedQuadrantTable = d3.select('.quadrant-table.selected');
   const scale = getScale()
 
   const adjustX = Math.sin(toRadian(startAngle)) - Math.cos(toRadian(startAngle))
@@ -53,6 +54,7 @@ function selectRadarQuadrant(order, startAngle, name) {
   const radarContainer = d3.select('#radar')
   const parentWidth = getElementWidth(radarContainer)
 
+  radarContainer.style('height', `${getElementHeight(selectedQuadrantTable)+60}px`)
   const translateLeftRightValues = {
     first: {
       left: parentWidth - quadrantWidth * scale,
@@ -301,7 +303,7 @@ function renderRadarQuadrantName(quadrant, parentGroup, tip) {
   if (adjustX < 0) {
     translateX = 60
   } else {
-    translateX = quadrantWidth * 2 - quadrantsGap - renderedText.width
+    translateX = quadrantWidth * 2 - 60 - renderedText.width
   }
   if (adjustY < 0) {
     ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? 8 : ctaArrowYOffset
@@ -390,38 +392,38 @@ function renderRadarQuadrants(size, svg, quadrant, rings, ringCalculator, tip) {
 }
 
 function renderRadarLegends(radarElement, hasMovements) {
-  const legendsContainer = radarElement.append('div').classed('radar-legends', true)
 
+  const legendsContainer = radarElement.append('div').classed('radar-legends', true)
   const newImage = legendsContainer
-    .append('img')
-    .attr('src', '/images/new.svg')
+    .append('div')
+    .attr('class', 'legend-div new-image')
     .attr('width', '37px')
     .attr('height', '37px')
-    .attr('alt', 'new blip legend icon')
+    .attr('title', 'new blip legend icon')
     .node().outerHTML
 
   const movedImage = legendsContainer
-    .append('img')
-    .attr('src', '/images/moved.svg')
+    .append('div')
+    .attr('class', 'legend-div moved-image')
     .attr('width', '37px')
     .attr('height', '37px')
-    .attr('alt', `moved in or out blip legend icon`)
+    .attr('title', `moved in or out blip legend icon`)
     .node().outerHTML
 
   const existingImage = legendsContainer
-    .append('img')
-    .attr('src', '/images/existing.svg')
+    .append('div')
+    .attr("class", "legend-div existing-image")
     .attr('width', '37px')
     .attr('height', '37px')
-    .attr('alt', 'existing blip legend icon')
+    .attr('title', 'existing blip legend icon')
     .node().outerHTML
 
   const noChangeImage = legendsContainer
-    .append('img')
-    .attr('src', '/images/no-change.svg')
+    .append('div')
+    .attr('class', 'legend-div no-change-image')
     .attr('width', '37px')
     .attr('height', '37px')
-    .attr('alt', 'no change blip legend icon')
+    .attr('title', 'no change blip legend icon')
     .node().outerHTML
 
   if (hasMovements) {
@@ -434,8 +436,7 @@ function renderRadarLegends(radarElement, hasMovements) {
 function renderMobileView(quadrant) {
   const quadrantBtn = d3.select('.all-quadrants-mobile').append('button')
   quadrantBtn
-    .attr('class', 'all-quadrants-mobile--btn')
-    .style('background-image', `url('/images/${quadrant.order}-quadrant-btn-bg.svg')`)
+    .attr('class', `all-quadrants-mobile--btn quadrant-${quadrant.order}-btn-bg`)
     .attr('id', quadrant.order + '-quadrant-mobile')
     .append('div')
     .attr('class', 'btn-text-wrapper')

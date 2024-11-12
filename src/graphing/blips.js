@@ -238,7 +238,7 @@ function drawBlipInCoordinates(blip, coordinates, order, quadrantGroup) {
   const group = quadrantGroup
     .append('g')
     .append('a')
-    .attr('href', 'javascript:void(0)')
+    // .attr('href', 'javascript:void(0)')
     .attr('class', 'blip-link')
     .attr('id', 'blip-link-' + blipId)
     .attr('data-blip-id', blipId)

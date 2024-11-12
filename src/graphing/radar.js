@@ -4,17 +4,17 @@ const Chance = require('chance')
 const _ = require('lodash/core')
 
 const RingCalculator = require('../util/ringCalculator')
-const AutoComplete = require('../util/autoComplete')
+// const AutoComplete = require('../util/autoComplete')
 const config = require('../config')
 const featureToggles = config().featureToggles
 const { plotRadarBlips } = require('./blips')
 const { graphConfig, getGraphSize } = require('./config')
 
-const { renderBanner } = require('./components/banner')
-const { renderQuadrantSubnav } = require('./components/quadrantSubnav')
-const { renderSearch } = require('./components/search')
+//const { renderBanner } = require('./components/banner')
+// const { renderQuadrantSubnav } = require('./components/quadrantSubnav')
+// const { renderSearch } = require('./components/search')
 const { renderAlternativeRadars } = require('./components/alternativeRadars')
-const { renderButtons } = require('./components/buttons')
+// const { renderButtons } = require('./components/buttons')
 const {
   renderRadarQuadrants,
   renderMobileView,
@@ -560,6 +560,8 @@ const Radar = function (size, radar) {
       .attr('transform', 'translate(0,0)')
 
     d3.select('#radar-plot').attr('width', size).attr('height', size)
+
+    d3.select('#radar').style('height', size+60+"px")
     d3.select(`svg#radar-plot`).style('padding', '0')
 
     const radarLegendsContainer = d3.select('.radar-legends')
@@ -633,15 +635,15 @@ const Radar = function (size, radar) {
       .text('Print this radar')
       .on('click', window.print.bind(window))
 
-    alternativeDiv
-      .append('div')
-      .classed('search-box', true)
-      .append('input')
-      .attr('id', 'auto-complete')
-      .attr('placeholder', 'Search')
-      .classed('search-radar', true)
+    // alternativeDiv
+    //   .append('div')
+    //   .classed('search-box', true)
+    //   .append('input')
+    //   .attr('id', 'auto-complete')
+    //   .attr('placeholder', 'Search')
+    //   .classed('search-radar', true)
 
-    AutoComplete('#auto-complete', quadrants, searchBlip)
+    // AutoComplete('#auto-complete', quadrants, searchBlip)
   }
 
   function plotRadarFooter() {
@@ -770,10 +772,10 @@ const Radar = function (size, radar) {
     alternatives = radar.getAlternatives()
     currentSheet = radar.getCurrentSheet()
 
-    const radarHeader = d3.select('main .graph-header')
+    // const radarHeader = d3.select('main .graph-header')
     const radarFooter = d3.select('main .graph-footer')
 
-    renderBanner(renderFullRadar)
+    // renderBanner(renderFullRadar)
 
     if (featureToggles.UIRefresh2022) {
       // renderQuadrantSubnav(radarHeader, quadrants, renderFullRadar)
@@ -812,6 +814,8 @@ const Radar = function (size, radar) {
     _.each(quadrants, function (quadrant) {
       let quadrantGroup
       if (featureToggles.UIRefresh2022) {
+
+
         quadrantGroup = renderRadarQuadrants(size, svg, quadrant, rings, ringCalculator, tip)
         plotLines(quadrantGroup, quadrant)
         const ringTextGroup = quadrantGroup.append('g')

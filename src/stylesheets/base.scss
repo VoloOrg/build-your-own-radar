@@ -3,11 +3,10 @@
 @import 'tip';
 @import 'form';
 @import 'error';
-@import 'header';
-@import 'footer';
-@import 'herobanner';
+
+
 @import 'quadrantsubnav';
-@import 'search';
+
 @import 'alternativeradars';
 @import 'buttons';
 @import 'quadrants';
@@ -16,21 +15,10 @@
 @import 'layout';
 @import 'landingpage';
 @import 'loader';
-@import 'screen';
-@import 'pdfPage';
 
-:root {
-  font-family: 'Roboto', sans-serif;
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: 'Inter var', sans-serif;
-  }
-}
 
 @media screen {
-  body {
+  .byod-main {
     font: 18px 'Open Sans';
     opacity: 0;
     @if $UIRefresh2022 {
@@ -100,6 +88,7 @@
       a {
         color: $link-normal;
         border-color: $link-normal;
+        text-decoration: none;
 
         &:hover {
           color: $link-hover;

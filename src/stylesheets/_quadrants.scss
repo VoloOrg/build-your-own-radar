@@ -400,17 +400,37 @@
       width: 100%;
       position: absolute;
       bottom: -22px;
+      max-height: 50px;
     }
 
-    img:nth-child(n + 2) {
+    //there are .legend old classes that are not used in the new design
+    .legend-div{
+      width: 37px;
+      height: 37px;
+    }
+
+    .legend-div:nth-child(n + 2) {
       margin-left: 24px;
     }
+    .legend-div.new-image{
+      content: url("./images/new.svg");
+    }
+    .legend-div.moved-image{
+      content: url("./images/moved.svg");
+    }
+    .legend-div.existing-image{
+      content: url("./images/existing.svg");
+    }
+    .legend-div.no-change-image{
+      content: url("./images/no-change.svg");
+    }
+
   }
 
   .all-quadrants-mobile {
     --quadrant-gap: 12px;
-    --quadrant-btn-width-mobile: 150px;
-    --quadrant-btn-height-mobile: 70px;
+    --quadrant-btn-width-mobile: 170px;
+    --quadrant-btn-height-mobile: 79px;
     display: none;
     flex-direction: column;
     flex-wrap: wrap;
@@ -450,14 +470,9 @@
       font-weight: bold;
       color: white;
       border: none;
-
+      padding: 20px;
       @include media-query-medium {
         font-size: 24px;
-      }
-
-      &::after {
-        content: url('/images/arrow-white-icon.svg');
-        margin: 4px 4px 0;
       }
 
       .btn-text-wrapper {
@@ -473,20 +488,28 @@
           max-width: 60%;
           max-height: 60px;
         }
+        &::after {
+          content: url('./images/arrow-white-icon.svg');
+          margin: 4px 4px 0;
+        }
       }
     }
 
     #first-quadrant-mobile {
       background-color: $sapphire;
+      background-image: url('./images/first-quadrant-btn-bg.svg');
     }
     #second-quadrant-mobile {
       background-color: $turmeric;
+      background-image: url("./images/second-quadrant-btn-bg.svg");
     }
     #third-quadrant-mobile {
       background-color: $jade;
+      background-image: url("./images/third-quadrant-btn-bg.svg");
     }
     #fourth-quadrant-mobile {
       background-color: $flamingo;
+      background-image: url("./images/fourth-quadrant-btn-bg.svg");
     }
   }
 }
