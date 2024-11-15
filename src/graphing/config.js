@@ -17,11 +17,21 @@ const isValidConfig = () => {
   return getQuadrants().length === 4 && isBetween(getRings().length, 1, 3)
 }
 
+const getQuadrantSize = () => {
+  const width = getRadarWidth();
+  return width > 1280 ?  width / 2 - quadrantGap / 2 : 550
+}
+const getRadarWidth = () => {
+  return typeof document !== "undefined"? document.querySelector('.byod-main').offsetWidth: 0
+}
+
+
 const graphConfig = {
-  effectiveQuadrantHeight: quadrantSize + quadrantGap / 2,
-  effectiveQuadrantWidth: quadrantSize + quadrantGap / 2,
-  quadrantHeight: quadrantSize,
-  quadrantWidth: quadrantSize,
+
+  effectiveQuadrantHeight: getQuadrantSize() + quadrantGap / 2,
+  effectiveQuadrantWidth: getQuadrantSize() + quadrantGap / 2,
+  quadrantHeight: getQuadrantSize(),
+  quadrantWidth: getQuadrantSize(),
   quadrantsGap: quadrantGap,
   minBlipWidth: 12,
   blipWidth: 22,

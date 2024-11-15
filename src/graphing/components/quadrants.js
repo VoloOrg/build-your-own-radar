@@ -540,9 +540,9 @@ function stickQuadrantOnScroll() {
     const radarWidth = radarContainer.node().getBoundingClientRect().width
     const selectedOrder = radarElement.attr('data-quadrant-selected')
 
-    const leftQuadrantLeftValue =
-      (window.innerWidth + radarWidth) / 2 - effectiveQuadrantWidth * scale + (quadrantsGap / 2) * scale
-    const rightQuadrantLeftValue = (window.innerWidth - radarWidth) / 2
+    console.log(quadrantsGap, 'quadrantGapwidth')
+    const leftQuadrantLeftValue = (window.innerWidth + radarWidth) / 2 - effectiveQuadrantWidth * scale;
+    const rightQuadrantLeftValue = (window.innerWidth - radarWidth) / 2 -  (quadrantsGap / 2);
 
     const radarLegendsWidth = getElementWidth(radarLegendsContainer)
 
