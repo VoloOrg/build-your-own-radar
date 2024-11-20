@@ -21,37 +21,15 @@
   .byod-main {
     font: 18px 'Open Sans';
     opacity: 0;
+
     @if $UIRefresh2022 {
       font-family: $baseFontFamily;
       opacity: 1;
 
-      h1 {
-        font-size: 1.5rem;
-        font-family: 'Bitter', serif;
-        text-transform: none;
-        letter-spacing: normal;
 
-        @include media-query-medium {
-          font-size: 2rem;
-        }
-
-        @include media-query-large {
-          font-size: 2.5rem;
-        }
-
-        @include media-query-xxlarge {
-          font-size: 3rem;
-        }
-
-        @include media-query-xxxlarge {
-          font-size: 3.5rem;
-        }
-      }
-
-      h2 {
+      .h2 {
         font-size: 1.25rem;
         font-weight: bold;
-        font-family: 'Roboto', serif;
         text-transform: none;
         letter-spacing: normal;
 

@@ -18,8 +18,7 @@ const { renderAlternativeRadars } = require('./components/alternativeRadars')
 const {
   renderRadarQuadrants,
   renderMobileView,
-  renderRadarLegends,
-  removeScrollListener,
+  renderRadarLegends
 } = require('./components/quadrants')
 const { renderQuadrantTables } = require('./components/quadrantTables')
 const { addQuadrantNameInPdfView, addRadarLinkInPdfView } = require('./pdfPage')
@@ -32,7 +31,7 @@ const ANIMATION_DURATION = 1000
 
 const Radar = function (size, radar) {
   const CENTER = size / 2
-  var svg, radarElement, quadrantButtons, buttonsGroup, header, alternativeDiv
+  var svg, svgWrapperDiv, radarElement, quadrantButtons, buttonsGroup, header, alternativeDiv
 
   var tip = d3tip()
     .attr('class', 'd3-tip')
@@ -508,13 +507,11 @@ const Radar = function (size, radar) {
   }
 
   function renderFullRadar() {
-    removeScrollListener()
+    // removeScrollListener()
 
     d3.select('#auto-complete').property('value', '')
 
-    window.scrollTo({
-      top: 0,
-      left: 0,
+    d3.select('.graph-footer').node().scrollIntoView({
       behavior: 'smooth',
     })
 
@@ -527,11 +524,14 @@ const Radar = function (size, radar) {
     const size = getGraphSize()
     d3.select('.home-link').remove()
     d3.select('.legend').remove()
-    d3.select('#radar').classed('mobile', false)
+    d3.select('#radar').attr('class', false).classed('mobile', false)
     d3.select('.all-quadrants-mobile').classed('show-all-quadrants-mobile', true)
 
     d3.select('li.quadrant-subnav__list-item.active-item').classed('active-item', false)
     d3.select('li.quadrant-subnav__list-item').classed('active-item', true)
+
+    // d3.selectAll('.quadrant-table__container').classed('right-order', false)
+    // d3.selectAll('.quadrant-table__container').classed('left-order', false)
 
     d3.select('.quadrant-subnav__dropdown-selector').text('All quadrants')
 
@@ -561,7 +561,7 @@ const Radar = function (size, radar) {
 
     d3.select('#radar-plot').attr('width', size).attr('height', size)
 
-    d3.select('#radar').style('height', size+60+"px")
+    // d3.select('#radar').style('height', size+60+"px")
     d3.select(`svg#radar-plot`).style('padding', '0')
 
     const radarLegendsContainer = d3.select('.radar-legends')
@@ -575,31 +575,31 @@ const Radar = function (size, radar) {
     d3.selectAll(`.quadrant-group rect:nth-child(2n)`).attr('tabindex', 0)
   }
 
-  function searchBlip(_e, ui) {
-    const { blip, quadrant } = ui.item
-    const isQuadrantSelected = d3.select('div.button.' + quadrant.order).classed('selected')
-    selectQuadrant.bind({}, quadrant.order, quadrant.startAngle)()
-    const selectedDesc = d3.select('#blip-description-' + blip.id())
-    d3.select('.blip-item-description.expanded').node() !== selectedDesc.node() &&
-      d3.select('.blip-item-description.expanded').classed('expanded', false)
-    selectedDesc.classed('expanded', true)
-
-    d3.selectAll('g.blip-link').attr('opacity', 0.3)
-    const group = d3.select('#blip-link-' + blip.id())
-    group.attr('opacity', 1.0)
-    d3.selectAll('.blip-list-item').classed('highlight', false)
-    d3.select('#blip-list-item-' + blip.id()).classed('highlight', true)
-    if (isQuadrantSelected) {
-      tip.show(blip.name(), group.node())
-    } else {
-      // need to account for the animation time associated with selecting a quadrant
-      tip.hide()
-
-      setTimeout(function () {
-        tip.show(blip.name(), group.node())
-      }, ANIMATION_DURATION)
-    }
-  }
+  // function searchBlip(_e, ui) {
+  //   const { blip, quadrant } = ui.item
+  //   const isQuadrantSelected = d3.select('div.button.' + quadrant.order).classed('selected')
+  //   selectQuadrant.bind({}, quadrant.order, quadrant.startAngle)()
+  //   const selectedDesc = d3.select('#blip-description-' + blip.id())
+  //   d3.select('.blip-item-description.expanded').node() !== selectedDesc.node() &&
+  //     d3.select('.blip-item-description.expanded').classed('expanded', false)
+  //   selectedDesc.classed('expanded', true)
+  //
+  //   d3.selectAll('g.blip-link').attr('opacity', 0.3)
+  //   const group = d3.select('#blip-link-' + blip.id())
+  //   group.attr('opacity', 1.0)
+  //   d3.selectAll('.blip-list-item').classed('highlight', false)
+  //   d3.select('#blip-list-item-' + blip.id()).classed('highlight', true)
+  //   if (isQuadrantSelected) {
+  //     tip.show(blip.name(), group.node())
+  //   } else {
+  //     // need to account for the animation time associated with selecting a quadrant
+  //     tip.hide()
+  //
+  //     setTimeout(function () {
+  //       tip.show(blip.name(), group.node())
+  //     }, ANIMATION_DURATION)
+  //   }
+  // }
 
   function plotRadarHeader() {
     header = d3.select('header')
@@ -797,11 +797,14 @@ const Radar = function (size, radar) {
       plotQuadrantButtons(quadrants)
     }
 
-    svg = radarElement.append('svg').call(tip)
 
+
+
+    svgWrapperDiv = radarElement.append('div').attr('class', 'svg-wrapper')
+    svg = svgWrapperDiv.append('svg').call(tip)
     if (featureToggles.UIRefresh2022) {
-      const legendHeight = 40
-      radarElement.style('height', size + legendHeight + 'px')
+      // const legendHeight = 40
+      // radarElement.style('height', size + legendHeight + 'px')
       svg.attr('id', 'radar-plot').attr('width', size).attr('height', size)
     } else {
       radarElement.style('height', size + 14 + 'px')
@@ -832,7 +835,7 @@ const Radar = function (size, radar) {
     })
 
     if (featureToggles.UIRefresh2022) {
-      renderRadarLegends(radarElement, hasMovementData(quadrants))
+      renderRadarLegends(svgWrapperDiv, hasMovementData(quadrants))
       hideTooltipOnScroll(tip)
       addRadarLinkInPdfView()
     }

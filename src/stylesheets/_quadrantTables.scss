@@ -18,16 +18,22 @@
     }
 
     @include media-query-xlarge {
-      max-width: 40%;
+      //max-width: 40%;
       margin-top: 0 !important;
+      width: 100%;
     }
 
     &__container {
       display: flex;
       justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      order: 1;
+
 
       @include media-query-xlarge {
-        display: block;
+        display: contents;
+        overflow: hidden;
         justify-content: unset;
       }
     }
