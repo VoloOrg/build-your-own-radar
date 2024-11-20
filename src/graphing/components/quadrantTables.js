@@ -1,6 +1,6 @@
 const d3 = require('d3')
-const { graphConfig, getScale, uiConfig } = require('../config')
-const { stickQuadrantOnScroll } = require('./quadrants')
+const { uiConfig } = require('../config')
+// const { stickQuadrantOnScroll } = require('./quadrants')
 const { removeAllSpaces } = require('../../util/stringUtil')
 
 function fadeOutAllBlips() {
@@ -52,9 +52,9 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
         d3.selectAll('.blip-list__item-container__name').attr('aria-expanded', 'false')
         d3.select('.blip-list__item-container.expand .blip-list__item-container__name').attr('aria-expanded', 'true')
 
-        if (window.innerWidth >= uiConfig.tabletViewWidth) {
-          stickQuadrantOnScroll()
-        }
+        // if (window.innerWidth >= uiConfig.tabletViewWidth) {
+          // stickQuadrantOnScroll()
+        // }
       })
 
     blipItemContainer
@@ -125,9 +125,9 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
 
     setTimeout(
       () => {
-        if (window.innerWidth >= uiConfig.tabletViewWidth) {
-          stickQuadrantOnScroll()
-        }
+        // if (window.innerWidth >= uiConfig.tabletViewWidth) {
+          // stickQuadrantOnScroll()
+        // }
 
         const isGroupBlip = isNaN(parseInt(blipId))
         if (isGroupBlip) {
@@ -157,24 +157,24 @@ function renderQuadrantTables(quadrants, rings, renderFullRadar) {
 
   const quadrantTablesContainer = radarContainer.append('div').classed('quadrant-table__container', true)
   quadrants.forEach(function (quadrant) {
-    const scale = getScale()
+    // const scale = getScale()
     let quadrantContainer
     if (window.innerWidth < uiConfig.tabletViewWidth && window.innerWidth >= uiConfig.mobileViewWidth) {
       quadrantContainer = quadrantTablesContainer
         .append('div')
         .classed('quadrant-table', true)
         .classed(quadrant.order, true)
-        .style(
-          'margin',
-          `${
-            graphConfig.quadrantHeight * scale +
-            graphConfig.quadrantsGap * scale +
-            graphConfig.quadrantsGap * 2 +
-            uiConfig.legendsHeight
-          }px auto 0px`,
-        )
-        .style('left', '0')
-        .style('right', 0)
+        // .style(
+        //   'margin',
+        //   `${
+        //     graphConfig.quadrantHeight * scale +
+        //     graphConfig.quadrantsGap * scale +
+        //     graphConfig.quadrantsGap * 2 +
+        //     uiConfig.legendsHeight
+        //   }px auto 0px`,
+        // )
+        // .style('left', '0')
+        // .style('right', 0)
     } else {
       quadrantContainer = quadrantTablesContainer
         .append('div')
@@ -208,8 +208,9 @@ function renderQuadrantTables(quadrants, rings, renderFullRadar) {
 
     ringNames.forEach(function (ringName) {
       quadrantContainer
-        .append('h2')
+        .append('div')
         .classed('quadrant-table__ring-name', true)
+        .classed("h2", true)
         .attr('data-ring-name', ringName)
         .text(ringName)
       quadrantContainer

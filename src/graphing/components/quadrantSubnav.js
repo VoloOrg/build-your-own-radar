@@ -1,5 +1,5 @@
 const d3 = require('d3')
-const { selectRadarQuadrant, removeScrollListener } = require('./quadrants')
+const { selectRadarQuadrant } = require('./quadrants')
 const { getRingIdString } = require('../../util/stringUtil')
 const { uiConfig } = require('../config')
 
@@ -16,7 +16,7 @@ function addListItem(quadrantList, name, callback) {
     .on('click', function (e) {
       d3.select('#radar').classed('no-blips', false)
       d3.select('#auto-complete').property('value', '')
-      removeScrollListener()
+      // removeScrollListener()
 
       d3.select('.graph-header').node().scrollIntoView({
         behavior: 'smooth',

@@ -17,11 +17,26 @@ const isValidConfig = () => {
   return getQuadrants().length === 4 && isBetween(getRings().length, 1, 3)
 }
 
+const getQuadrantSize = () => {
+  const width = getRadarWidth();
+  return width > 1280 ?  width / 2 - quadrantGap / 2 : 550
+}
+const getRadarWidth = () => {
+  if(typeof window === "undefined" || typeof document === "undefined") {
+    return 0;
+  }
+  const mainElement = document.querySelector('.byod-main');
+  const mainElemenComputedStyle = window.getComputedStyle(mainElement);
+  return mainElement.offsetWidth - parseInt(mainElemenComputedStyle.paddingLeft) - parseInt(mainElemenComputedStyle.paddingRight);
+}
+
+
 const graphConfig = {
-  effectiveQuadrantHeight: quadrantSize + quadrantGap / 2,
-  effectiveQuadrantWidth: quadrantSize + quadrantGap / 2,
-  quadrantHeight: quadrantSize,
-  quadrantWidth: quadrantSize,
+
+  effectiveQuadrantHeight: getQuadrantSize() + quadrantGap / 2,
+  effectiveQuadrantWidth: getQuadrantSize() + quadrantGap / 2,
+  quadrantHeight: getQuadrantSize(),
+  quadrantWidth: getQuadrantSize(),
   quadrantsGap: quadrantGap,
   minBlipWidth: 12,
   blipWidth: 22,
@@ -35,7 +50,7 @@ const graphConfig = {
 }
 
 const uiConfig = {
-  subnavHeight: 0,
+  subnavHeight: 115, //height for  the sticky menu
   bannerHeight: 0,
   tabletBannerHeight: 0,
   headerHeight: 0,
@@ -45,7 +60,7 @@ const uiConfig = {
 }
 
 function getScale() {
-  return window.innerWidth < 1800 ? 1.15 : 1.2
+  return window.innerWidth < 1800 ? 1.15 : 0.9
 }
 
 function getGraphSize() {

@@ -3,7 +3,7 @@
 @mixin layout-margin($factor, $screen-size) {
   @if $screen-size <= $screen-medium {
     @media screen and (min-width: $screen-size) {
-      width: calc(0.9 * $factor * 100%);
+      width: calc(1 * $factor * 100%);
     }
   } @else {
     @media screen and (min-width: $screen-size) {
