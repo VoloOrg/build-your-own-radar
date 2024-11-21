@@ -568,7 +568,8 @@ const Radar = function (size, radar) {
     radarLegendsContainer.attr('class', 'radar-legends')
     radarLegendsContainer.attr('style', null)
 
-    d3.selectAll('svg#radar-plot a').attr('aria-hidden', null).attr('tabindex', null)
+    // d3.selectAll('svg#radar-plot a').attr('aria-hidden', null).attr('tabindex', null)
+    d3.selectAll('svg#radar-plot a').attr('tabindex', null)
     d3.selectAll('.quadrant-table button').attr('aria-hidden', 'true').attr('tabindex', -1)
     d3.selectAll('.blip-list__item-container__name').attr('aria-expanded', 'false')
 
