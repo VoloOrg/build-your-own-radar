@@ -78,7 +78,10 @@
           justify-content: space-between;
           align-items: center;
           cursor: pointer;
-          scroll-margin-top: $subnavHeight;
+          scroll-margin-top: $tabletSubnavHeight;
+          @include media-query-large {
+            scroll-margin-top: $subnavHeight;
+          }
 
           & > * {
             pointer-events: none;
