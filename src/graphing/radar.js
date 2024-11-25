@@ -496,6 +496,9 @@ const Radar = function (size, radar) {
 
     if (featureToggles.UIRefresh2022) {
       d3.select('#radar-plot').attr('width', size).attr('height', size)
+        .transition()
+        .duration(ANIMATION_DURATION)
+        .attr('viewBox', `0 0 ${size} ${size}`)
       d3.selectAll(`.quadrant-bg-images`).each(function () {
         this.classList.remove('hidden')
       })
@@ -560,7 +563,9 @@ const Radar = function (size, radar) {
       .attr('transform', 'translate(0,0)')
 
     d3.select('#radar-plot').attr('width', size).attr('height', size)
-
+      .transition()
+      .duration(ANIMATION_DURATION)
+      .attr('viewBox', `0 0 ${size} ${size}`)
     // d3.select('#radar').style('height', size+60+"px")
     d3.select(`svg#radar-plot`).style('padding', '0')
 
@@ -806,13 +811,21 @@ const Radar = function (size, radar) {
     if (featureToggles.UIRefresh2022) {
       // const legendHeight = 40
       // radarElement.style('height', size + legendHeight + 'px')
-      svg.attr('id', 'radar-plot').attr('width', size).attr('height', size)
+      svg.attr('id', 'radar-plot')
+        .attr('width', size)
+        .attr('height', size)
+        .transition()
+        .duration(ANIMATION_DURATION)
+        .attr('viewBox', `0 0 ${size} ${size}`)
     } else {
       radarElement.style('height', size + 14 + 'px')
       svg
         .attr('id', 'radar-plot')
         .attr('width', size)
         .attr('height', size + 14)
+        .transition()
+        .duration(ANIMATION_DURATION)
+        .attr('viewBox', '0 0 ' + size + ' ' + size)
     }
 
     _.each(quadrants, function (quadrant) {

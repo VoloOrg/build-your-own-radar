@@ -95,6 +95,9 @@ function selectRadarQuadrant(order, startAngle, name) {
     // .style('transform-origin', `0 0`)
     .attr('width', quadrantWidth)
     .attr('height', quadrantHeight + quadrantsGap)
+    .transition()
+    .duration(ANIMATION_DURATION)
+    .attr('viewBox', `0 0 ${quadrantWidth} ${quadrantHeight + quadrantsGap}`)
   svg.classed('quadrant-view', true)
 
   const quadrantGroupTranslate = {
@@ -304,7 +307,7 @@ function renderRadarQuadrantName(quadrant, parentGroup, tip) {
     translateX = quadrantWidth * 2 - 60 - renderedText.width
   }
   if (adjustY < 0) {
-    ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? 8 : ctaArrowYOffset
+    ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? ctaArrowYOffset : ctaArrowYOffset
     translateY = 60
   } else {
     translateY = effectiveQuadrantWidth * 2 - 60
