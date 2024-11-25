@@ -307,7 +307,7 @@ function renderRadarQuadrantName(quadrant, parentGroup, tip) {
     translateX = quadrantWidth * 2 - 60 - renderedText.width
   }
   if (adjustY < 0) {
-    ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? ctaArrowYOffset : ctaArrowYOffset
+    ctaArrowYOffset = quadrantTextElement.childElementCount > 1 ? 8 : ctaArrowYOffset
     translateY = 60
   } else {
     translateY = effectiveQuadrantWidth * 2 - 60
