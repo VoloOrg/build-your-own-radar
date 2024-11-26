@@ -51,7 +51,8 @@ const graphConfig = {
 
 const uiConfig = {
   subnavHeight: 115, //height for  the sticky menu
-  tabletSubnavHeight: 75,
+  tabletSubnavHeight: 105,
+  mobileSubnavHeight: 80,
   bannerHeight: 0,
   tabletBannerHeight: 0,
   headerHeight: 0,
