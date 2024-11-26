@@ -95,6 +95,9 @@ function selectRadarQuadrant(order, startAngle, name) {
     // .style('transform-origin', `0 0`)
     .attr('width', quadrantWidth)
     .attr('height', quadrantHeight + quadrantsGap)
+    .transition()
+    .duration(ANIMATION_DURATION)
+    .attr('viewBox', `0 0 ${quadrantWidth} ${quadrantHeight + quadrantsGap}`)
   svg.classed('quadrant-view', true)
 
   const quadrantGroupTranslate = {

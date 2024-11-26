@@ -10,6 +10,10 @@
     @include layout-margin(calc(5 / 12), $screen-xxlarge);
     @include layout-margin(calc(5 / 12), $screen-xxxlarge);
 
+    //for scrolling bug
+    margin-top: -100px;
+    padding-top: 100px;
+
     &__ring-name {
       text-transform: none;
       margin: 0;
@@ -18,8 +22,6 @@
     }
 
     @include media-query-xlarge {
-      //max-width: 40%;
-      margin-top: 0 !important;
       width: 100%;
     }
 
@@ -78,8 +80,11 @@
           justify-content: space-between;
           align-items: center;
           cursor: pointer;
-          scroll-margin-top: $tabletSubnavHeight;
-          @include media-query-large {
+          scroll-margin-top: $mobileSubnavHeight;
+          @media screen and (min-width: 951px) { //volo specific size
+            scroll-margin-top: $tabletSubnavHeight;
+          }
+          @media screen and (min-width: 1201px) { //volo specific size
             scroll-margin-top: $subnavHeight;
           }
 
